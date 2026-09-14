@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RPSTournament.Core/RPSTournament.Core.csproj" />
+  <Project Path="RPSTournament/RPSTournament.csproj" />
+</Solution>
