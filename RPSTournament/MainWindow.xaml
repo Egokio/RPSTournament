@@ -1,20 +1,98 @@
 ﻿<Window x:Class="RPSTournament.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RPSTournament"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid x:Name="RPS">
-        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="111,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="24" TextChanged="NameBox_TextChanged"/>
-        <Label Content="Choose your name:" HorizontalAlignment="Left" Margin="17,65,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <ComboBox x:Name="PlayerMove" HorizontalAlignment="Left" Margin="111,190,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Button x:Name="PlayRound" Content="Play" HorizontalAlignment="Left" Margin="548,123,0,0" VerticalAlignment="Top" Height="83" Width="170" Click="PlayRound_Click"/>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,242,285,56" SelectionChanged="DataGrid_SelectionChanged"/>
-        <TextBlock x:Name="Score" HorizontalAlignment="Left" Margin="662,297,0,0" TextWrapping="Wrap" Text="Score:" VerticalAlignment="Top" Height="40" Width="75" FontSize="16"/>
-        <TextBlock x:Name="Status" HorizontalAlignment="Left" Margin="678,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="38" Width="53" FontSize="16"><Run Text="Status"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
-        <Button x:Name="NewTournament" Content="Start New Tournament" HorizontalAlignment="Left" Margin="366,96,0,0" VerticalAlignment="Top" Height="64" Width="129" Click="NewTournament_Click"/>
+        Title="Rock Paper Scissors Tournament"
+        Height="600"
+        Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Grid.Row="0"
+                   Text="Rock Paper Scissors Tournament"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <!-- Player name -->
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,15">
+
+            <TextBlock Text="Player name:"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"/>
+
+            <TextBox x:Name="NameBox"
+                     Width="200"
+                     Height="30"
+                     TextChanged="NameBox_TextChanged"/>
+        </StackPanel>
+
+        <!-- Move selection -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    Margin="0,0,0,15">
+
+            <TextBlock Text="Choose your move:"
+                       VerticalAlignment="Center"
+                       Margin="0,0,10,0"/>
+
+            <ComboBox x:Name="MoveBox"
+                      Width="150"
+                      Height="30"
+                      SelectionChanged="ComboBox_SelectionChanged">
+
+                <ComboBoxItem Content="Rock"/>
+                <ComboBoxItem Content="Paper"/>
+                <ComboBoxItem Content="Scissors"/>
+
+            </ComboBox>
+
+            <Button Content="Play Round"
+                    Width="120"
+                    Height="30"
+                    Margin="15,0,0,0"
+                    Click="PlayRound_Click"/>
+
+        </StackPanel>
+
+        <!-- Round history -->
+        <DataGrid Grid.Row="2"
+                  x:Name="RoundsGrid"
+                  AutoGenerateColumns="True"
+                  IsReadOnly="True"
+                  Margin="0,45,10,196"
+                  SelectionChanged="DataGrid_SelectionChanged" Grid.RowSpan="2"/>
+
+        <!-- Bottom information -->
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+
+            <TextBlock x:Name="ScoreText"
+                       Text="Score: 0 - 0"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="0,0,30,0"/>
+
+            <Button Content="New Tournament"
+                    Width="140"
+                    Height="35"
+                    Click="NewTournament_Click"/>
+
+        </StackPanel>
 
     </Grid>
 </Window>
+    
