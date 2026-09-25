@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Элементы решения/">
+    <File Path="README.md" />
+  </Folder>
   <Project Path="RPSTournament.Core/RPSTournament.Core.csproj" />
   <Project Path="RPSTournament/RPSTournament.csproj" />
 </Solution>
